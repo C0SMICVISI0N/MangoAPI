@@ -56,13 +56,33 @@ function API:UiLib(name, repoid)
 
     }
 
-    local LibFormats = {
+    local RepoFormats = {
 
         [0] = Repos[repoid] .. name .. "%20Lib/" .. name .. "%20Lib%20Source.lua";
 
     }
 
-    return loadstring(game:HttpGet(LibFormats[repoid]))()
+    return loadstring(game:HttpGet(RepoFormats[repoid]))()
+
+end
+
+function API:RunRepoScript(name, repoid)
+
+    repoid = repoid or 0
+
+    local Repos = {
+
+        [0] = "https://raw.githubusercontent.com/C0SMICVISI0N/MangoAPI/main/API/Scripts/"
+
+    }
+
+    local RepoFormats = {
+
+        [0] = Repos[repoid] .. name .. ".lua"
+
+    }
+
+    return loadstring(game:HttpGet(RepoFormats[repoid]))()
 
 end
 
