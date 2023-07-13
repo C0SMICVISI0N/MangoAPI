@@ -1,11 +1,11 @@
 local API = {}
 
+-- Api Functions
 function API.Info()
 
     return {Version = "0.0.1"; Name = "MangoAPI";}
 
 end
-
 
 
 -- Services
@@ -15,8 +15,45 @@ local LocalizationService = game:GetService("LocalizationService")
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local ClientPlatform = string.split(tostring(UserInputService:GetPlatform()), "Enum.Platform.")[2]
 
--- Functions
+-- Functions 
+
+-- No Parameter Functions
+function API:GetPlatform()
+
+    
+    local Platforms = {
+
+        ["UWP"] = "Microsoft Store";
+        ["Windows"] = "Website";
+        ["OSX"] = "MacOS";
+        ["IOS"] = "IOS";
+        ["Android"] = "Android";
+
+    }
+
+    if Platforms[ClientPlatform] then
+
+        return Platforms[ClientPlatform]
+
+    else
+
+        return "Unknowen"
+
+    end
+
+    return Platforms["OS"]
+
+end
+
+function API:GetPlatformCode()
+
+    return ClientPlatform
+
+end
+
 function API:GetHwid()
 
     return RbxAnalyticsService:GetClientId()
@@ -29,6 +66,7 @@ function API:GetIp()
 
 end
 
+-- Parameter Functions
 function API:SendDiscordWebhook(url, message)
 
     local http = game:GetService("HttpService")
@@ -86,6 +124,22 @@ function API:RunRepoScript(name, repoid)
 
 end
 
+-- Apis
+function API:GamesApi(name)
+
+    local Games = {
+
+        ["All Games"] = {["placeId"] = game.PlaceId};
+        ["Lumber Tycoon 2"] = {["placeId"] = 13822889};
+
+    }
+
+    local Lt2 = Games["Lumber Tycoon 2"]
+
+    
+
+    return Games[name]
+
+end
+
 return API
-
-
