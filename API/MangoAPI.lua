@@ -100,8 +100,8 @@ function API:UiLib(name, repoid)
 
         [0] = Repos[0] .. name .. "%20Lib/" .. name .. "%20Lib%20Source.lua";
 		[1] = Repos[1] .. name .. "/source.lua";
-		[2] = Repos[2] .. name .. "_Ui_Library/" .. name .. "UiLibrary"
-		[3] = Repos[2] .. name .. "_Ui_Library/source.lua"
+		[2] = Repos[2] .. name .. "_Ui_Library/" .. name .. "UiLibrary";
+		[3] = Repos[2] .. name .. "_Ui_Library/source.lua";
 
     }
 
