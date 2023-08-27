@@ -91,16 +91,40 @@ function API:UiLib(name, repoid)
     local Repos = {
 
         [0] = "https://raw.githubusercontent.com/drillygzzly/Roblox-UI-Libs/main/";
+		[1] = "https://raw.githubusercontent.com/GhostDuckyy/UI-Libraries/main/";
+		[2] = "https://raw.githubusercontent.com/juywvm/ui-libs/main/";
 
     }
 
     local RepoFormats = {
 
-        [0] = Repos[repoid] .. name .. "%20Lib/" .. name .. "%20Lib%20Source.lua";
+        [0] = Repos[0] .. name .. "%20Lib/" .. name .. "%20Lib%20Source.lua";
+		[1] = Repos[1] .. name .. "/source.lua";
+		[2] = Repos[2] .. name .. "_Ui_Library/" .. name .. "UiLibrary"
+		[3] = Repos[2] .. name .. "_Ui_Library/source.lua"
 
     }
 
-    return loadstring(game:HttpGet(RepoFormats[repoid]))()
+	local ls
+
+	for i = 1, #Repos do
+		
+		local s, e = pcall(function()
+			
+			ls = loadstring(game:HttpGet(RepoFormats[i - 1]))()
+
+		end)
+
+		if s then
+		
+			return ls
+
+		end
+
+	end
+	
+	warn("MangoAPI: Error Loading Library")
+    
 
 end
 
