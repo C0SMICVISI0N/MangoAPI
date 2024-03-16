@@ -469,7 +469,7 @@ function CFAHub:CreateWindow(title, gameName, intro, logog)
     Objects[Container] = "Container"
     Container.BorderSizePixel = 0
     Container.Position = UDim2.new(0.5, 0, 0.5, 0)
-    Container.Size = UDim2.new(0, 673, 0, 402)
+    Container.Size = UDim2.new(0, 523, 0, 302)  -- UDim2.new(0, 673, 0, 402)
 
     UIScale.Parent = Container
     UIScale.Scale = 1
